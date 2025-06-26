@@ -99,13 +99,14 @@
                         <p><small>
                                 <%= new Date(review.createdAt).toLocaleString('en-US', { month: 'long' ,
                                     day: 'numeric' , year: 'numeric' }) %>
-                            </small></p>
-
+                        </small></p>
+                        
+                        <% if (currUser && review.author && review.author._id.equals(currUser._id)) { %>
                         <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
                             method="post">
                             <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
                         </form>
-
+                        <% } %>
                     </div>
                 </div>
             <% } %>
