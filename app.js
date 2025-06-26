@@ -22,7 +22,6 @@ const reviewsRouter = require('./routes/review.js');
 const userRouter = require("./routes/user.js");
 const MongoStore = require('connect-mongo');
 
-// const MONGO_URL = 'mongodb://localhost:27017/wanderlust';
 const dbUrl = process.env.ATLAS_DB_URL;
 
 main()

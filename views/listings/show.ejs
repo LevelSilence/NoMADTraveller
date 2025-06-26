@@ -21,13 +21,12 @@
                 <p>
                     <%= listing.description %>
                 </p>
-                <p>&#8377; <%= listing.price.toLocaleString('en-IN') %>
+                <b><p>&#8377; <%= listing.price.toLocaleString('en-IN') %></b>
                 </p>
                 <p>
-                    <%= listing.location %>
-                </p>
-                <p>
-                    <%= listing.country %>
+                    <b><i class="fa-solid fa-location-dot text-danger me-1"></i>
+                    <%= listing.location %>,
+                    <%= listing.country %></b>
                 </p>
             </div>
         </div>
@@ -121,25 +120,6 @@
                 data-title="<%= listing.title %> Exact location after Booking"
                 data-key="<%= maptilerKey %>">
             </div>
-        </div>
-
-        
-<!-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const lng = <%= coordinates && coordinates[0] ? coordinates[0] : 0 %>;
-    const lat = <%= coordinates && coordinates[1] ? coordinates[1] : 0 %>;
-
-    const map = new maplibregl.Map({
-      container: 'map',
-      style: 'https://api.maptiler.com/maps/streets/style.json?key=<%= maptilerKey %>',
-      center: [lng, lat],
-      zoom: 12
-    });
-
-    new maplibregl.Marker()
-      .setLngLat([lng, lat])
-      .addTo(map);
-  });
-</script> -->
+        </div>        
 
 <script src="/js/map.js"></script>

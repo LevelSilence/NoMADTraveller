@@ -56,6 +56,7 @@ body {
     margin-right: 1rem;
     color: #5e5a5a !important;
 }
+
 .f-info-socials i:hover {
     color: #1a63ff !important;
 }
@@ -221,9 +222,9 @@ body {
 }
 
 .selected-filter {
-  color: #fe424d !important;
-  border-bottom: 2px solid #fe424d;
-  font-weight: bold;
+    color: #fe424d !important;
+    border-bottom: 2px solid #fe424d;
+    font-weight: bold;
 }
 
 .wrapper {
@@ -238,4 +239,105 @@ body {
 
 footer {
     flex-shrink: 0;
+}
+
+
+/* //bubble effect */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 25px;
+    z-index: 1000;
+    background-color: #ff385c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    animation: bubbleJump 2s infinite ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+}
+
+.scroll-to-top::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 60px;
+    background: #333;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.scroll-to-top:hover::after {
+    opacity: 1;
+}
+
+@keyframes bubbleJump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+.card-index:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    transition: 0.2s ease-in-out;
+}
+
+
+.logo {
+    border-radius: 25px;
+}
+
+
+.footer-hover-link {
+    text-decoration: none;
+    color: #000;
+    transition: text-decoration 0.2s;
+}
+
+.footer-hover-link:hover {
+    text-decoration: underline;
+}
+
+.social-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.3);
+    color: #ff385c !important;
+    /* Airbnb Red */
+}
+
+.footer-bottom-links a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #6c757d;
+}
+
+.footer-bottom-links a:hover {
+    text-decoration: underline;
+    color: #000;
 }

@@ -3,24 +3,38 @@ const axios = require('axios');
 
 
 module.exports.index = async (req, res) => {
-    const { q, category } = req.query;
-    let filter = {};
+  const { q, category, country } = req.query;
+  let filter = {};
 
-    if (q) {
-        filter.$or = [
-            { title: { $regex: q, $options: "i" } },
-            { location: { $regex: q, $options: "i" } },
-            { description: { $regex: q, $options: "i" } },
-            { country: { $regex: q, $options: "i" } }
-        ];
-    }
+  if (q) {
+    filter.$or = [
+      { title: { $regex: q, $options: "i" } },
+      { location: { $regex: q, $options: "i" } },
+      { description: { $regex: q, $options: "i" } },
+      { country: { $regex: q, $options: "i" } }
+    ];
+  }
 
-    if (category) {
-        filter.category = category;
-    }
+  if (category) {
+    filter.category = category;
+  }
 
-    const listings = await Listing.find(filter);
-    res.render("listings/index.ejs", { listings, q, category });
+  let selectedCountries = [];
+  if (country) {
+    selectedCountries = Array.isArray(country) ? country : [country];
+    filter.country = { $in: selectedCountries };
+  }
+
+  const listings = await Listing.find(filter);
+  const countries = await Listing.distinct("country");
+
+  res.render("listings/index.ejs", {
+    listings,
+    q,
+    category,
+    countries,
+    selectedCountries
+  });
 };
 
 
